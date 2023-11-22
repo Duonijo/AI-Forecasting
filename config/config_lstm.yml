@@ -1,0 +1,11 @@
+configurations:
+  - name: config0
+    epochs: 1000
+    lr: 1e-3
+    sequence_length: 7
+    horizon: 7
+    model:
+      n_layers: 1
+      hidden_size: 100
+      bidirectional: False
+#milestones=[400, 800, 1100]

@@ -1,0 +1,13 @@
+lightning
+tensorboard
+pandas
+numpy
+plotly
+torch
+scikit-learn
+pytest
+seaborn
+statsmodels
+pytorch-forecasting
+pyyaml
+kaleido
