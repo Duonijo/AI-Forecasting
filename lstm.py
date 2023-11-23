@@ -140,14 +140,15 @@ def update_loop(model, test_tensors, criterion, optimiser, num_epochs=20, patien
 
         model.eval()
         # Select a batch of data for the prediction interval
-        X_batch = X_test[i].unsqueeze(0).to(device)
-        y_batch = y_test[i].unsqueeze(0).to(device)[0][0]
+        with torch.no_grad():
+            X_batch = X_test[i].unsqueeze(0).to(device)
+            y_batch = y_test[i].unsqueeze(0).to(device)[0][0]
 
-        # Forward pass with the previous hidden state and cell state
-        output, _, _ = model(X_batch, None, None)
+            # Forward pass with the previous hidden state and cell state
+            output, _, _ = model(X_batch, None, None)
 
-        # Save predictions
-        predictions.append(output.cpu().detach().numpy()[0])
+            # Save predictions
+            predictions.append(output.cpu().detach().numpy()[0])
 
         for epoch in range(num_epochs):
             model.train()
